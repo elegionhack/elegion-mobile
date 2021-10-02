@@ -1,5 +1,7 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:elegion/bloc/events/events_bloc.dart';
+import 'package:elegion/ui/screens/profiles/profiles.dart';
+import 'package:elegion/ui/screens/projects/projects.dart';
 import 'package:elegion/ui/widgets/debug_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,19 +16,33 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var _slectedIndex = 0;
+  var _slectedIndex = 1;
+  final _controller = PageController(initialPage: 1);
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
-      body: BlocBuilder<EventsBloc, EventsState>(
-        builder: (context, state) {
-          if (state is EventsLoaded) {
-            return const Center(child: DebugRouter());
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
+      body: PageView(
+        controller: _controller,
+        children: [
+          const ProjectsScreen(),
+          BlocBuilder<EventsBloc, EventsState>(
+            builder: (context, state) {
+              if (state is EventsLoaded) {
+                return const Center(child: DebugRouter());
+              }
+              return const Center(child: CircularProgressIndicator());
+            },
+          ),
+          const ProfilesScreen(),
+        ],
       ),
       bottomNavigationBar: CustomNavigationBar(
         iconSize: 30.0,
@@ -44,29 +60,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           CustomNavigationBarItem(
-            icon: const Icon(Icons.people_alt),
+            icon: const Icon(Icons.home_filled),
             title: Text(
-              'Работники',
+              'Главная',
               style: _style(1, theme),
             ),
           ),
           CustomNavigationBarItem(
-            icon: const Icon(Icons.home_filled),
+            icon: const Icon(Icons.people_alt),
             title: Text(
-              'Главная',
+              'Работники',
               style: _style(2, theme),
-            ),
-          ),
-          CustomNavigationBarItem(
-            icon: const Icon(Icons.account_circle),
-            title: Text(
-              'Профиль',
-              style: _style(3, theme),
             ),
           ),
         ],
         currentIndex: _slectedIndex,
         onTap: (i) {
+          _controller.jumpToPage(i);
           setState(() => _slectedIndex = i);
         },
       ),
