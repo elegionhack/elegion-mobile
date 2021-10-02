@@ -1,5 +1,7 @@
+import 'package:elegion/bloc/projects/projects_bloc.dart';
 import 'package:elegion/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({
@@ -9,10 +11,19 @@ class ProjectsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (ctx, i) {
-          return const ProjectCard();
+      body: BlocBuilder<ProjectsBloc, ProjectsState>(
+        builder: (context, state) {
+          if (state is ProjectsLoaded) {
+            return ListView.builder(
+              itemCount: state.projects.length,
+              itemBuilder: (ctx, i) {
+                return ProjectCard(
+                  project: state.projects[i],
+                );
+              },
+            );
+          }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );
