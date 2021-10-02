@@ -29,4 +29,9 @@ class Project {
       _$ProjectFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProjectToJson(this);
+
+  @override
+  String toString() {
+    return 'Project(id: $id, title: $title, customer: $customer, description: $description, workers: $workers, trackerLink: $trackerLink, googleCalendarLink: $googleCalendarLink, telegramLink: $telegramLink)';
+  }
 }

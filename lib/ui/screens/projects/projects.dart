@@ -17,7 +17,9 @@ class ProjectsScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: state.projects.length,
               itemBuilder: (ctx, i) {
-                return const ProjectCard();
+                return ProjectCard(
+                  project: state.projects[i],
+                );
               },
             );
           }
