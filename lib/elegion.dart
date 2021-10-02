@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elegion/bloc/auth/auth_bloc.dart';
 import 'package:elegion/ui/router/router.gr.dart';
+import 'package:elegion/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +25,7 @@ class _ElegionAppState extends State<ElegionApp> {
       ],
       child: MaterialApp.router(
         title: 'Elegion',
+        theme: lightTheme,
         routeInformationParser: widget._appRouter.defaultRouteParser(),
         builder: (_, router) {
           return router!;
