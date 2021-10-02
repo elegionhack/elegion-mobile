@@ -19,7 +19,7 @@ class ProfilesScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Container(        
+      body: Container(
         child: Column(
           children: [
             Row(
@@ -28,21 +28,26 @@ class ProfilesScreen extends StatelessWidget {
                     onPressed: () {},
                     child: Row(
                       children: [
-                        Text('Сортировать по', style: TextStyle(color: Theme.of(context).primaryColor),),
-                        Icon(Icons.keyboard_arrow_down, color: Theme.of(context).primaryColor,)
+                        Text(
+                          'Сортировать по',
+                          style:
+                              TextStyle(color: Theme.of(context).primaryColor),
+                        ),
+                        Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Theme.of(context).primaryColor,
+                        )
                       ],
                     )),
               ],
             ),
             Container(
-              height: 600,
-              child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int itemCount) {
-              return ProfileCard();
-            }
-              )
-            )
+                height: 600,
+                child: ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (BuildContext context, int itemCount) {
+                      return ProfileCard();
+                    }))
           ],
         ),
       ),
@@ -110,8 +115,8 @@ class ProfileCard extends StatelessWidget {
                     ),
                     Container(
                       child: Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: Text(
                           "РАБОТАЕТ",
                           style: TextStyle(
@@ -122,11 +127,31 @@ class ProfileCard extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                           color: Colors.grey[400],
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
                   ],
                 ),
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 25),
+                      child: RichText(
+                        text: TextSpan(
+                          text: "5",
+                          style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: "  ",
+                                style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor)),
+                            TextSpan(
+                                text: "435",
+                                style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor)),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
             decoration: BoxDecoration(
