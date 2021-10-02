@@ -9,12 +9,12 @@ class ApiProfilesRepository {
   Dio get _dio => httpClientFactory.dio;
 
   Future<Profile> get(String id) async {
-    final res = await _dio.get('profiles/$id');
+    final res = await _dio.get('user/$id');
     return Profile.fromJson(res.data);
   }
 
   Future<List<Profile>> getAll() async {
-    final res = await _dio.get('profiles/');
+    final res = await _dio.get('user/all');
     return (res.data as List<dynamic>).map((e) => Profile.fromJson(e)).toList();
   }
 }

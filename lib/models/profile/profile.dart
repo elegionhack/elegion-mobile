@@ -16,6 +16,7 @@ class Profile {
     required this.frozenBonuses,
   });
 
+  @JsonKey(name: '_id')
   final String id;
   final String login;
   final DateTime birthday;

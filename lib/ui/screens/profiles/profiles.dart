@@ -1,5 +1,7 @@
+import 'package:elegion/bloc/profiles/profiles_bloc.dart';
 import 'package:elegion/ui/widgets/profiles/profiles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfilesScreen extends StatelessWidget {
   const ProfilesScreen({
@@ -39,15 +41,21 @@ class ProfilesScreen extends StatelessWidget {
                   )),
             ],
           ),
-          SizedBox(
-            height: 600,
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int itemCount) {
-                return ProfileCard();
-              },
-            ),
-          )
+          Flexible(child: BlocBuilder<ProfilesBloc, ProfilesState>(
+            builder: (context, state) {
+              if (state is ProfilesLoaded) {
+                return ListView.builder(
+                  itemCount: state.profiles.length,
+                  itemBuilder: (_, int i) {
+                    return ProfileCard(
+                      profile: state.profiles[i],
+                    );
+                  },
+                );
+              }
+              return const Center(child: CircularProgressIndicator());
+            },
+          )),
         ],
       ),
     );
