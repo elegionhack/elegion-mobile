@@ -16,6 +16,7 @@ Project _$ProjectFromJson(Map<String, dynamic> json) => Project(
       googleCalendarLink: json['googleCalendarLink'] as String,
       telegramLink: json['telegramLink'] as String,
       description: json['description'] as String,
+      avatarUrl: json['avatarUrl'] as String?,
     );
 
 Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{
@@ -27,4 +28,5 @@ Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{
       'trackerLink': instance.trackerLink,
       'googleCalendarLink': instance.googleCalendarLink,
       'telegramLink': instance.telegramLink,
+      'avatarUrl': instance.avatarUrl,
     };

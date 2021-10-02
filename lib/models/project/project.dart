@@ -13,6 +13,7 @@ class Project {
     required this.googleCalendarLink,
     required this.telegramLink,
     required this.description,
+    required this.avatarUrl,
   });
 
   @JsonKey(name: '_id')
@@ -24,6 +25,8 @@ class Project {
   final String trackerLink;
   final String googleCalendarLink;
   final String telegramLink;
+  @JsonKey(required: false)
+  final String? avatarUrl;
 
   factory Project.fromJson(Map<String, dynamic> json) =>
       _$ProjectFromJson(json);

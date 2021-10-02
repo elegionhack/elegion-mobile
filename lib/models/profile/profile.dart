@@ -14,6 +14,7 @@ class Profile {
     required this.status,
     required this.bonuses,
     required this.frozenBonuses,
+    required this.avatarUrl,
   });
 
   @JsonKey(name: '_id')
@@ -26,6 +27,8 @@ class Profile {
   final String status;
   final double bonuses;
   final double frozenBonuses;
+  @JsonKey(required: false)
+  final String? avatarUrl;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>
       _$ProfileFromJson(json);
