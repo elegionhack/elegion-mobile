@@ -27,6 +27,5 @@ class Project {
   factory Project.fromJson(Map<String, dynamic> json) =>
       _$ProjectFromJson(json);
 
-  @override
   Map<String, dynamic> toJson() => _$ProjectToJson(this);
 }
