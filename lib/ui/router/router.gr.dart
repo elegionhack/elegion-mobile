@@ -7,6 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i6;
 import 'package:flutter/material.dart' as _i7;
 
+import '../../models/project/project.dart' as _i8;
 import '../screens/profile/profile.dart' as _i2;
 import '../screens/profiles/profiles.dart' as _i3;
 import '../screens/project/project.dart' as _i4;
@@ -32,8 +33,10 @@ class AppRouter extends _i6.RootStackRouter {
           routeData: routeData, child: const _i3.ProfilesScreen());
     },
     ProjectScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<ProjectScreenRouteArgs>();
       return _i6.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i4.ProjectScreen());
+          routeData: routeData,
+          child: _i4.ProjectScreen(key: args.key, project: args.project));
     },
     ProjectsScreenRoute.name: (routeData) {
       return _i6.CupertinoPageX<dynamic>(
@@ -73,10 +76,21 @@ class ProfilesScreenRoute extends _i6.PageRouteInfo<void> {
 }
 
 /// generated route for [_i4.ProjectScreen]
-class ProjectScreenRoute extends _i6.PageRouteInfo<void> {
-  const ProjectScreenRoute() : super(name, path: '/project-screen');
+class ProjectScreenRoute extends _i6.PageRouteInfo<ProjectScreenRouteArgs> {
+  ProjectScreenRoute({_i7.Key? key, required _i8.Project project})
+      : super(name,
+            path: '/project-screen',
+            args: ProjectScreenRouteArgs(key: key, project: project));
 
   static const String name = 'ProjectScreenRoute';
+}
+
+class ProjectScreenRouteArgs {
+  const ProjectScreenRouteArgs({this.key, required this.project});
+
+  final _i7.Key? key;
+
+  final _i8.Project project;
 }
 
 /// generated route for [_i5.ProjectsScreen]
