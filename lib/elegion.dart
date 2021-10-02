@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elegion/bloc/auth/auth_bloc.dart';
 import 'package:elegion/bloc/events/events_bloc.dart';
+import 'package:elegion/bloc/profile/profile_bloc.dart';
 import 'package:elegion/bloc/profiles/profiles_bloc.dart';
 import 'package:elegion/bloc/projects/projects_bloc.dart';
 import 'package:elegion/repositories/events/repository.dart';
@@ -63,6 +64,11 @@ class _ElegionAppState extends State<ElegionApp> {
           create: (_) => EventsBloc(
             G.get<ApiEventsRepository>(),
           )..add(LoadEvents()),
+        ),
+        BlocProvider<ProfileBloc>(
+          create: (_) => ProfileBloc(
+            G.get<ApiProfilesRepository>(),
+          )..add(LoadProfile()),
         ),
       ],
       child: MaterialApp.router(
