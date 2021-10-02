@@ -12,7 +12,6 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-
     debugPrint('[BLOC] Transition in $bloc with event ${transition.event}');
   }
 

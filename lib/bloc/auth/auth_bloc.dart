@@ -10,7 +10,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   @override
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
     if (event is SignIn) {
-      _mapSignInToState(event);
+      yield* _mapSignInToState(event);
     }
   }
 
