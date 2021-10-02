@@ -4,17 +4,17 @@ import 'package:equatable/equatable.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
-class AuthBloc extends Bloc<AuthBlocEvent, AuthblocState> {
+class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(NotAuthorized());
 
   @override
-  Stream<AuthblocState> mapEventToState(AuthBlocEvent event) async* {
+  Stream<AuthState> mapEventToState(AuthEvent event) async* {
     if (event is SignIn) {
       _mapSignInToState(event);
     }
   }
 
-  Stream<AuthblocState> _mapSignInToState(AuthBlocEvent event) async* {
+  Stream<AuthState> _mapSignInToState(AuthEvent event) async* {
     yield Authorized();
   }
 }

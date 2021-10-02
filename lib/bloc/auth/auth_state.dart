@@ -1,12 +1,12 @@
 part of 'auth_bloc.dart';
 
-abstract class AuthblocState extends Equatable {
-  const AuthblocState();
+abstract class AuthState extends Equatable {
+  const AuthState();
 
   @override
   List<Object> get props => [];
 }
 
-class Authorized extends AuthblocState {}
+class Authorized extends AuthState {}
 
-class NotAuthorized extends AuthblocState {}
+class NotAuthorized extends AuthState {}
