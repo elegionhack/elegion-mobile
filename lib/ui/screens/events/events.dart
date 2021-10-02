@@ -16,6 +16,18 @@ class EventsScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.account_circle_outlined,
+                size: 35,
+              ),
+            ),
+          ),
+        ],
       ),
       body: BlocBuilder<EventsBloc, EventsState>(
         builder: (context, state) {
