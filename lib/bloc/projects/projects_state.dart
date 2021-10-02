@@ -17,5 +17,5 @@ class ProjectsLoaded extends ProjectsState {
   final List<Project> projects;
 
   @override
-  List<Object> get props => super.props..add(projects);
+  List<Object> get props => super.props..add(projects.hashCode);
 }

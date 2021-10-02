@@ -15,7 +15,7 @@ class ProjectsScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is ProjectsLoaded) {
             return ListView.builder(
-              itemCount: 10,
+              itemCount: state.projects.length,
               itemBuilder: (ctx, i) {
                 return const ProjectCard();
               },

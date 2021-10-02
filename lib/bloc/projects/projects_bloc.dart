@@ -18,7 +18,6 @@ class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
     }
   }
 
-  @override
   Stream<ProjectsState> _mapLoadProjectsToState(LoadProjects event) async* {
     yield Projectsloading();
     try {

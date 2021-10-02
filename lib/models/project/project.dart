@@ -15,6 +15,7 @@ class Project {
     required this.description,
   });
 
+  @JsonKey(name: '_id')
   final String id;
   final String title;
   final String customer;

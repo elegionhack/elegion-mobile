@@ -23,7 +23,7 @@ class _ElegionAppState extends State<ElegionApp> {
     final httpFactory = HttpClientFactory(
       apiKey: '',
       apiPath: '',
-      baseUrl: 'http://176.59.214.27:5000',
+      baseUrl: 'https://elegion.herokuapp.com',
     );
     G.registerSingleton<HttpClientFactory>(httpFactory);
     G.registerSingleton<ApiProjectsRepository>(
