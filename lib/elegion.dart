@@ -21,7 +21,7 @@ class _ElegionAppState extends State<ElegionApp> {
     final httpFactory = HttpClientFactory(
       apiKey: '',
       apiPath: '',
-      baseUrl: '',
+      baseUrl: 'http://localhost:5000',
     );
     G.registerSingleton<HttpClientFactory>(httpFactory);
     super.initState();
