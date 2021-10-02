@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elegion/bloc/auth/auth_bloc.dart';
+import 'package:elegion/bloc/projects/projects_bloc.dart';
+import 'package:elegion/repositories/projects/api_projects_repository/api_projects_repository.dart';
 import 'package:elegion/ui/router/router.gr.dart';
 import 'package:elegion/ui/theme/theme.dart';
 import 'package:elegion/utils/utils.dart';
@@ -21,9 +23,11 @@ class _ElegionAppState extends State<ElegionApp> {
     final httpFactory = HttpClientFactory(
       apiKey: '',
       apiPath: '',
-      baseUrl: 'http://localhost:5000',
+      baseUrl: 'http://176.59.214.27:5000',
     );
     G.registerSingleton<HttpClientFactory>(httpFactory);
+    G.registerSingleton<ApiProjectsRepository>(
+        ApiProjectsRepository(httpFactory));
     super.initState();
   }
 
@@ -33,7 +37,12 @@ class _ElegionAppState extends State<ElegionApp> {
       providers: [
         BlocProvider<AuthBloc>(
           create: (_) => AuthBloc(),
-        )
+        ),
+        BlocProvider<ProjectsBloc>(
+          create: (_) => ProjectsBloc(
+            G.get<ApiProjectsRepository>(),
+          )..add(LoadProjects()),
+        ),
       ],
       child: MaterialApp.router(
         title: 'Elegion',
