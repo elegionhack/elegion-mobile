@@ -138,14 +138,19 @@ class ProfileCard extends StatelessWidget {
                       child: RichText(
                         text: TextSpan(
                           text: "5",
-                          style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+                          style:
+                              TextStyle(fontSize: 14, color: Colors.grey[500]),
                           children: <TextSpan>[
                             TextSpan(
                                 text: "  ",
-                                style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor)),
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context).primaryColor)),
                             TextSpan(
                                 text: "435",
-                                style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor)),
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Theme.of(context).primaryColor)),
                           ],
                         ),
                       ),
