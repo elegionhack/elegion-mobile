@@ -204,6 +204,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  dio_flutter_transformer:
+    dependency: "direct dev"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "1c9ed43805e833c348c98d12000eb687b02c6971"
+      url: "https://github.com/KoderLabs/dio_flutter_transformer"
+    source: git
+    version: "4.0.0"
   equatable:
     dependency: "direct main"
     description:
@@ -327,7 +336,7 @@ packages:
     source: hosted
     version: "0.6.3"
   json_annotation:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: json_annotation
       url: "https://pub.dartlang.org"
@@ -410,6 +419,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.0"
+  pretty_dio_logger:
+    dependency: "direct dev"
+    description:
+      name: pretty_dio_logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0-beta-1"
   provider:
     dependency: transitive
     description:
