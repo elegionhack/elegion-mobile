@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
+class ProfilesScreen extends StatelessWidget {
+  const ProfilesScreen({
     Key? key,
   }) : super(key: key);
 
@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Home screen'),
+        child: Text('Profiles screen'),
       ),
     );
   }
