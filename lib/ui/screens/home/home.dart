@@ -1,8 +1,10 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:elegion/bloc/events/events_bloc.dart';
+import 'package:elegion/ui/screens/events/events.dart';
 import 'package:elegion/ui/screens/profiles/profiles.dart';
 import 'package:elegion/ui/screens/projects/projects.dart';
 import 'package:elegion/ui/widgets/debug_router.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,6 +26,15 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  // BlocBuilder<EventsBloc, EventsState>(
+  //   builder: (context, state) {
+  //     if (state is EventsLoaded) {
+  //       return const Center(child: DebugRouter());
+  //     }
+  //     return const Center(child: CircularProgressIndicator());
+  //   },
+  // ),
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -31,17 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: PageView(
         controller: _controller,
-        children: [
-          const ProjectsScreen(),
-          BlocBuilder<EventsBloc, EventsState>(
-            builder: (context, state) {
-              if (state is EventsLoaded) {
-                return const Center(child: DebugRouter());
-              }
-              return const Center(child: CircularProgressIndicator());
-            },
-          ),
-          const ProfilesScreen(),
+        children: const [
+          ProjectsScreen(),
+          EventsScreen(),
+          ProfilesScreen(),
+          if (kDebugMode) Center(child: DebugRouter()),
         ],
       ),
       bottomNavigationBar: CustomNavigationBar(
@@ -73,6 +78,14 @@ class _HomeScreenState extends State<HomeScreen> {
               style: _style(2, theme),
             ),
           ),
+          if (kDebugMode)
+            CustomNavigationBarItem(
+              icon: const Icon(Icons.bug_report),
+              title: Text(
+                'Маршруты',
+                style: _style(3, theme),
+              ),
+            ),
         ],
         currentIndex: _slectedIndex,
         onTap: (i) {
