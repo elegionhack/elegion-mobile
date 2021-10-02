@@ -1,12 +1,10 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
-import 'package:elegion/bloc/events/events_bloc.dart';
 import 'package:elegion/ui/screens/events/events.dart';
 import 'package:elegion/ui/screens/profiles/profiles.dart';
 import 'package:elegion/ui/screens/projects/projects.dart';
 import 'package:elegion/ui/widgets/debug_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -25,15 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
   }
-
-  // BlocBuilder<EventsBloc, EventsState>(
-  //   builder: (context, state) {
-  //     if (state is EventsLoaded) {
-  //       return const Center(child: DebugRouter());
-  //     }
-  //     return const Center(child: CircularProgressIndicator());
-  //   },
-  // ),
 
   @override
   Widget build(BuildContext context) {
