@@ -1,3 +1,4 @@
+import 'package:elegion/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsScreen extends StatelessWidget {
@@ -7,9 +8,12 @@ class ProjectsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Projects screen'),
+    return Scaffold(
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (ctx, i) {
+          return const ProjectCard();
+        },
       ),
     );
   }
