@@ -15,6 +15,7 @@ Event _$EventFromJson(Map<String, dynamic> json) => Event(
           .map((e) => e as String)
           .toList(),
       imgUrl: json['imgUrl'] as String,
+      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
@@ -24,4 +25,5 @@ Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
       'description': instance.description,
       'participantsList': instance.participantsList,
       'imgUrl': instance.imgUrl,
+      'title': instance.title,
     };

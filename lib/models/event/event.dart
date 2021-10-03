@@ -11,6 +11,7 @@ class Event {
     required this.description,
     required this.participantsList,
     required this.imgUrl,
+    required this.title,
   });
 
   @JsonKey(name: '_id')
@@ -20,6 +21,7 @@ class Event {
   final String description;
   final List<String> participantsList;
   final String imgUrl;
+  final String title;
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
 
