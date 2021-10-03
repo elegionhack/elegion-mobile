@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elegion/models/project/project.dart';
 import 'package:elegion/ui/router/router.gr.dart';
+import 'package:elegion/utils/url_launcher/launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({Key? key, required this.project}) : super(key: key);
@@ -88,23 +88,28 @@ class ProjectCard extends StatelessWidget {
                     child: Row(
                       children: [
                         GestureDetector(
-                            onTap: () {
-                              launchTelegram();
-                            },
-                            child: Container(
-                                margin: EdgeInsets.only(right: 15),
-                                child: SvgPicture.asset(
-                                  'assets/icons/tlg.svg',
-                                  height: 25,
-                                  width: 25,
-                                ))),
-                        GestureDetector(
-                            onTap: () {},
+                          onTap: () {
+                            launchURL(project.telegramLink);
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 15),
                             child: SvgPicture.asset(
-                              'assets/icons/cal.svg',
+                              'assets/icons/tlg.svg',
                               height: 25,
                               width: 25,
-                            )),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            launchURL(project.googleCalendarLink);
+                          },
+                          child: SvgPicture.asset(
+                            'assets/icons/cal.svg',
+                            height: 25,
+                            width: 25,
+                          ),
+                        ),
                       ],
                     ),
                   )
@@ -121,13 +126,5 @@ class ProjectCard extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-void launchTelegram() async {
-  String url = "https://telegram.me/probka00";
-  print("launchingUrl: $url");
-  if (await canLaunch(url)) {
-    await launch(url);
   }
 }
