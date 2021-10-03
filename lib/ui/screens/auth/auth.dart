@@ -21,7 +21,12 @@ class AuthScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset('assets/images/elogo.png'),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 10),
+                  Text(
+                    '*Сейчас можно войти без логина и пароля',
+                    style: theme.textTheme.subtitle1!.copyWith(fontSize: 8),
+                  ),
+                  const SizedBox(height: 20),
                   TextFormField(
                     decoration: InputDecoration(
                       filled: true,

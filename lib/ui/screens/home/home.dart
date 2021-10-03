@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ProjectsScreen(),
           EventsScreen(),
           ProfilesScreen(),
-          if (kDebugMode) Center(child: DebugRouter()),
+          // if (kDebugMode) Center(child: DebugRouter()),
         ],
       ),
       bottomNavigationBar: CustomNavigationBar(
@@ -67,14 +67,14 @@ class _HomeScreenState extends State<HomeScreen> {
               style: _style(2, theme),
             ),
           ),
-          if (kDebugMode)
-            CustomNavigationBarItem(
-              icon: const Icon(Icons.bug_report),
-              title: Text(
-                'Маршруты',
-                style: _style(3, theme),
-              ),
-            ),
+          // if (kDebugMode)
+          //   CustomNavigationBarItem(
+          //     icon: const Icon(Icons.bug_report),
+          //     title: Text(
+          //       'Маршруты',
+          //       style: _style(3, theme),
+          //     ),
+          //   ),
         ],
         currentIndex: _slectedIndex,
         onTap: (i) {
