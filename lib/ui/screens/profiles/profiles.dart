@@ -14,7 +14,7 @@ class ProfilesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Работники',
+          'Легионеры',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w400,
