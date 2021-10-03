@@ -1,4 +1,4 @@
-import 'package:elegion/bloc/project/project_bloc.dart';
+import 'package:elegion/models/profile/profile.dart';
 import 'package:elegion/models/project/project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,8 +25,9 @@ class ProjectScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  child: Text(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  child: const Text(
                     'Описание',
                     style: TextStyle(
                       fontSize: 24,
@@ -35,16 +36,16 @@ class ProjectScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                    margin: EdgeInsets.symmetric(horizontal: 15),
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
                       project.description,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w300,
                       ),
                     )),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: RichText(
                     text: TextSpan(
                       text: 'Заказчик: ',
@@ -55,18 +56,21 @@ class ProjectScreen extends StatelessWidget {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                            text: '${project.customer}',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black)),
+                          text: project.customer,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
                 Divider(color: Colors.grey[400]),
                 Container(
-                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                     child: Text(
                       'Участники:',
                       style: TextStyle(
@@ -74,14 +78,12 @@ class ProjectScreen extends StatelessWidget {
                           fontWeight: FontWeight.w300,
                           color: Theme.of(context).primaryColor),
                     )),
-                Container(
+                SizedBox(
                   height: 170,
                   child: ListView(
-                    children: [
-                      MemberCard(project: project),
-                      MemberCard(project: project),
-                      MemberCard(project: project),
-                    ],
+                    children: project.workersModels
+                        .map((e) => MemberCard(profile: e!))
+                        .toList(),
                   ),
                 ),
                 Divider(
@@ -156,10 +158,10 @@ class ProjectScreen extends StatelessWidget {
 class MemberCard extends StatelessWidget {
   const MemberCard({
     Key? key,
-    required this.project,
+    required this.profile,
   }) : super(key: key);
 
-  final Project project;
+  final Profile profile;
 
   @override
   Widget build(BuildContext context) {
@@ -186,9 +188,9 @@ class MemberCard extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30.0),
-                          child: project.avatarUrl != null
+                          child: profile.avatarUrl != null
                               ? Image.network(
-                                  project.avatarUrl!,
+                                  profile.avatarUrl!,
                                   height: 50,
                                   width: 50,
                                   fit: BoxFit.cover,
@@ -203,7 +205,7 @@ class MemberCard extends StatelessWidget {
                     children: [
                       Container(
                         child: Text(
-                          project.title,
+                          profile.fullName,
                           style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
@@ -213,7 +215,7 @@ class MemberCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: Text(
-                          project.description,
+                          profile.position,
                           style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w300,
@@ -272,15 +274,28 @@ class TopProjectBar extends StatelessWidget {
       children: [
         Container(
           height: 240,
+          decoration: project.photo != null
+              ? BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      project.photo!,
+                    ),
+                    fit: BoxFit.fitWidth,
+                  ),
+                )
+              : null,
+        ),
+        Container(
+          height: 240,
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                  "https://images.spasibovsem.ru/catalog/original/operator-sotovoj-svyazi-tele2-moskva-otzyvy-1496938012.jpg"),
-              fit: BoxFit.fitWidth,
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Colors.transparent, Colors.black.withOpacity(0.2)],
             ),
           ),
         ),
-        Container(
+        SizedBox(
           height: 240,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -288,10 +303,10 @@ class TopProjectBar extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: Text(
                       project.title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
@@ -300,7 +315,7 @@ class TopProjectBar extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: GestureDetector(
                         onTap: () {},
                         child: SvgPicture.asset(
