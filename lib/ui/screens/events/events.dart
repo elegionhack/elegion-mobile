@@ -1,7 +1,9 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:elegion/bloc/events/events_bloc.dart';
+import 'package:elegion/models/event/event.dart';
 import 'package:elegion/ui/router/router.gr.dart';
+import 'package:elegion/ui/widgets/events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,9 +38,21 @@ class EventsScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is EventsLoaded) {
             return Center(
-              child: ListView(
-                children: state.events.map((e) => Text('$e')).toList(),
+              child: GridView.count(
+                mainAxisSpacing: 5.0,
+                crossAxisSpacing: 5.0,
+                padding: const EdgeInsets.all(10.0),
+                crossAxisCount: 2,
+                children: List.generate(
+                  state.events.length,
+                  (i) => EventCard(
+                    event: state.events[i],
+                  ),
+                ),
               ),
+              // ListView(
+              //   children: state.events.map((e) => Text('$e')).toList(),
+              // ),
             );
           }
           return const Center(child: CircularProgressIndicator());
