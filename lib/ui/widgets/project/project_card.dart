@@ -84,11 +84,18 @@ class ProjectCard extends StatelessWidget {
                             onTap: () {},
                             child: Container(
                                 margin: EdgeInsets.only(right: 15),
-                                child:
-                                    SvgPicture.asset('assets/icons/tlg.svg', height: 25, width: 25,))),
+                                child: SvgPicture.asset(
+                                  'assets/icons/tlg.svg',
+                                  height: 25,
+                                  width: 25,
+                                ))),
                         GestureDetector(
                             onTap: () {},
-                            child: SvgPicture.asset('assets/icons/cal.svg', height: 25, width: 25,)),
+                            child: SvgPicture.asset(
+                              'assets/icons/cal.svg',
+                              height: 25,
+                              width: 25,
+                            )),
                       ],
                     ),
                   )
