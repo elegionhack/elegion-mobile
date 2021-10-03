@@ -24,4 +24,9 @@ class Event {
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
 
   Map<String, dynamic> toJson() => _$EventToJson(this);
+
+  @override
+  String toString() {
+    return 'Event(id: $id, type: $type, bonus: $bonus, description: $description, participantsList: $participantsList, imgUrl: $imgUrl)';
+  }
 }

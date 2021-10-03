@@ -37,7 +37,7 @@ class EventsScreen extends StatelessWidget {
           if (state is EventsLoaded) {
             return Center(
               child: ListView(
-                children: [],
+                children: state.events.map((e) => Text('$e')).toList(),
               ),
             );
           }

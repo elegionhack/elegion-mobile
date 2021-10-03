@@ -22,7 +22,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (widget.profile == null) {
       BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
     }
-
     super.initState();
   }
 
