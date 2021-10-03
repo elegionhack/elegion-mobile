@@ -10,6 +10,7 @@ class ProfilesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -26,19 +27,22 @@ class ProfilesScreen extends StatelessWidget {
           Row(
             children: [
               TextButton(
-                  onPressed: () {},
-                  child: Row(
-                    children: [
-                      Text(
-                        'Сортировать по',
-                        style: TextStyle(color: Theme.of(context).primaryColor),
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Text(
+                      'Сортировать по',
+                      style: theme.textTheme.bodyText1!.copyWith(
+                        color: theme.hintColor,
                       ),
-                      Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Theme.of(context).primaryColor,
-                      )
-                    ],
-                  )),
+                    ),
+                    Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Theme.of(context).primaryColor,
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
           Flexible(child: BlocBuilder<ProfilesBloc, ProfilesState>(

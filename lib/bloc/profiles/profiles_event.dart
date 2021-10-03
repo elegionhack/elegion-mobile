@@ -8,3 +8,11 @@ class ProfilesEvent extends Equatable {
 }
 
 class LoadProfiles extends ProfilesEvent {}
+
+class UpdateProfilesfilter extends ProfilesEvent {
+  const UpdateProfilesfilter(this.filter);
+  final ProfileFilter filter;
+
+  @override
+  List<Object> get props => super.props..addAll([filter]);
+}

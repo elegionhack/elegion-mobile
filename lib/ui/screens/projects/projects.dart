@@ -25,8 +25,8 @@ class ProjectsScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                margin: EdgeInsets.only(left: 10),
+              const Padding(
+                padding: EdgeInsets.only(left: 10),
                 child: Text(
                   'Сортировать по',
                   style: TextStyle(
