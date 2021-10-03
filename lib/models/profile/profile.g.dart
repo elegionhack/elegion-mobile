@@ -17,6 +17,7 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) => Profile(
       bonuses: (json['bonuses'] as num).toDouble(),
       frozenBonuses: (json['frozenBonuses'] as num).toDouble(),
       avatarUrl: json['avatarUrl'] as String?,
+      telegramLink: json['telegramLink'] as String,
     );
 
 Map<String, dynamic> _$ProfileToJson(Profile instance) => <String, dynamic>{
@@ -30,4 +31,5 @@ Map<String, dynamic> _$ProfileToJson(Profile instance) => <String, dynamic>{
       'bonuses': instance.bonuses,
       'frozenBonuses': instance.frozenBonuses,
       'avatarUrl': instance.avatarUrl,
+      'telegramLink': instance.telegramLink,
     };

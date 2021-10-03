@@ -1,8 +1,10 @@
 import 'package:elegion/bloc/profile/profile_bloc.dart';
 import 'package:elegion/models/profile/profile.dart';
 import 'package:elegion/utils/formaters/date_formater.dart';
+import 'package:elegion/utils/url_launcher/launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({
@@ -278,6 +280,32 @@ class _ProfileScreenBody extends StatelessWidget {
             color: Colors.grey[400],
             indent: 15,
             endIndent: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Чат в Telegram',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w300,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  launchURL(profile.telegramLink);
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(right: 15),
+                  child: SvgPicture.asset(
+                    'assets/icons/tlg.svg',
+                    height: 25,
+                    width: 25,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
