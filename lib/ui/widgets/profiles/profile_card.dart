@@ -13,6 +13,7 @@ class ProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
       child: GestureDetector(
@@ -20,6 +21,7 @@ class ProfileCard extends StatelessWidget {
           AutoRouter.of(context).push(ProfileScreenRoute(profile: profile));
         },
         child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -50,72 +52,74 @@ class ProfileCard extends StatelessWidget {
                       )
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        profile.fullName,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Text(
-                          profile.position,
+                  SizedBox(
+                    width: size.width * 0.45,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          profile.fullName,
                           style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w300,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                      ),
-                      Container(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 5),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
                           child: Text(
-                            profile.status,
+                            profile.position,
                             style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            child: Text(
+                              profile.status,
+                              style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w700,
-                                color: Colors.white),
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[400],
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
                           ),
                         ),
-                        decoration: BoxDecoration(
-                            color: Colors.grey[400],
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(10))),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: RichText(
-                      text: TextSpan(
-                        text: '${profile.frozenBonuses}',
-                        style: TextStyle(fontSize: 14, color: Colors.grey[500]),
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: "  ",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Theme.of(context).primaryColor)),
-                          TextSpan(
-                              text: '${profile.bonuses}',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Theme.of(context).primaryColor)),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              )
+              Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: RichText(
+                  text: TextSpan(
+                    text: '${profile.frozenBonuses}',
+                    style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: "  ",
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Theme.of(context).primaryColor)),
+                      TextSpan(
+                          text: '${profile.bonuses}',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Theme.of(context).primaryColor)),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
           decoration: BoxDecoration(

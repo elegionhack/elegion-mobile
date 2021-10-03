@@ -26,22 +26,36 @@ class ProfilesScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              TextButton(
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Text(
-                      'Сортировать по',
-                      style: theme.textTheme.bodyText1!.copyWith(
-                        color: theme.hintColor,
-                      ),
+              Row(
+                children: [
+                  Text(
+                    'Сортировать по',
+                    style: theme.textTheme.bodyText1!.copyWith(
+                      color: theme.hintColor,
                     ),
-                    Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Theme.of(context).primaryColor,
-                    )
-                  ],
-                ),
+                  ),
+                  BlocBuilder<ProfilesBloc, ProfilesState>(
+                    builder: (context, state) {
+                      return DropdownButton<ProfileSortingType>(
+                        value: state.filter.sortingType,
+                        underline: const SizedBox(),
+                        icon: Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        items: ProfileSortingType.values.map((value) {
+                          return DropdownMenuItem<ProfileSortingType>(
+                            value: value,
+                            child: Text(value.title),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          _updateFilter(context, value!);
+                        },
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),
@@ -61,6 +75,17 @@ class ProfilesScreen extends StatelessWidget {
             },
           )),
         ],
+      ),
+    );
+  }
+
+  void _updateFilter(BuildContext context, ProfileSortingType sortingType) {
+    final state = BlocProvider.of<ProfilesBloc>(context).state;
+    BlocProvider.of<ProfilesBloc>(context).add(
+      UpdateProfilesfilter(
+        state.filter.copyWith(
+          sortingType: sortingType,
+        ),
       ),
     );
   }
