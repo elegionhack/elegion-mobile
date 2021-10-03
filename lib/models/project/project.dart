@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:elegion/models/profile/profile.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'project.g.dart';
@@ -8,12 +11,12 @@ class Project {
     required this.id,
     required this.title,
     required this.customer,
-    required this.workers,
     required this.trackerLink,
     required this.googleCalendarLink,
     required this.telegramLink,
     required this.description,
     required this.avatarUrl,
+    required this.workers,
   });
 
   @JsonKey(name: '_id')
@@ -27,6 +30,9 @@ class Project {
   final String telegramLink;
   @JsonKey(required: false)
   final String? avatarUrl;
+
+  List<Profile> get workersModels =>
+      workers.map((e) => Profile.fromJson(jsonDecode(e))).toList();
 
   factory Project.fromJson(Map<String, dynamic> json) =>
       _$ProjectFromJson(json);
