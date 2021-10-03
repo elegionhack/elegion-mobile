@@ -18,7 +18,7 @@ class TopEventBar extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(event.imgUrl),
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.cover,
             ),
           ),
         ),
