@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elegion/ui/router/auth_navigator.dart';
+import 'package:elegion/ui/screens/event/event.dart';
 import 'package:elegion/ui/screens/events/events.dart';
 import 'package:elegion/ui/screens/profile/profile.dart';
 import 'package:elegion/ui/screens/profiles/profiles.dart';
@@ -18,7 +19,8 @@ import 'package:elegion/ui/screens/projects/projects.dart';
     AutoRoute(page: ProfilesScreen),
     AutoRoute(page: ProjectScreen),
     AutoRoute(page: ProjectsScreen),
-    AutoRoute(page: EventsScreen)
+    AutoRoute(page: EventsScreen),
+    AutoRoute(page: EventScreen),
   ],
 )
 class $AppRouter {}

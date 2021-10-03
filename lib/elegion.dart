@@ -68,7 +68,7 @@ class _ElegionAppState extends State<ElegionApp> {
         BlocProvider<ProfileBloc>(
           create: (_) => ProfileBloc(
             G.get<ApiProfilesRepository>(),
-          )..add(LoadProfile()),
+          ),
         ),
       ],
       child: MaterialApp.router(

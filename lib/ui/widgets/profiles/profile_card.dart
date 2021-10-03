@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elegion/models/profile/profile.dart';
+import 'package:elegion/ui/router/router.gr.dart';
 import 'package:flutter/material.dart';
 
 class ProfileCard extends StatelessWidget {
@@ -14,7 +16,9 @@ class ProfileCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          AutoRouter.of(context).push(ProfileScreenRoute(profile: profile));
+        },
         child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
