@@ -15,11 +15,10 @@ class EventScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: Theme.of(context).primaryColor,          
-          label: Text('Участвовать'),
-          onPressed: () {},
-        ),
-      
+        backgroundColor: Theme.of(context).primaryColor,
+        label: Text('Участвовать'),
+        onPressed: () {},
+      ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
@@ -71,7 +70,6 @@ class EventScreen extends StatelessWidget {
           MemberCard(),
           MemberCard(),
           MemberCard(),
-          
         ],
       ),
     );
@@ -132,7 +130,7 @@ class MemberCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: Text(
-                          "Мидл разработчик шарпа",
+                          "Middle C# developer",
                           style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w300,
