@@ -67,7 +67,7 @@ dependency_overrides:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/elogo.png"
+  image_path: "assets/images/elogo_app.png"
 
 # The following section is specific to Flutter.
 flutter:
