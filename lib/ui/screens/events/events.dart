@@ -1,4 +1,7 @@
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:elegion/bloc/events/events_bloc.dart';
+import 'package:elegion/ui/router/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +23,7 @@ class EventsScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () => _openProfile(context),
               icon: const Icon(
                 Icons.account_circle_outlined,
                 size: 35,
@@ -41,6 +44,12 @@ class EventsScreen extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         },
       ),
+    );
+  }
+
+  void _openProfile(BuildContext context) {
+    AutoRouter.of(context).push(
+      ProfileScreenRoute(),
     );
   }
 }

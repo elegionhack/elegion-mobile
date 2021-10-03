@@ -28,18 +28,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      body: _buildSelectedProfile(),
+    );
+  }
+
+  Widget _buildSelectedProfile() {
     if (widget.profile != null) {
-      return Scaffold(
-        body: _ProfileScreenBody(profile: widget.profile!),
-      );
+      return _ProfileScreenBody(profile: widget.profile!);
     }
 
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         if (state is ProfileLoaded) {
-          return Scaffold(
-            body: _ProfileScreenBody(profile: state.profile),
-          );
+          return _ProfileScreenBody(profile: state.profile);
         }
         return const Center(child: CircularProgressIndicator());
       },
@@ -69,7 +71,7 @@ class _ProfileScreenBody extends StatelessWidget {
                     children: [
                       Container(
                         alignment: Alignment.center,
-                        margin: EdgeInsets.symmetric(vertical: 30),
+                        margin: const EdgeInsets.symmetric(vertical: 30),
                         decoration: BoxDecoration(
                           border: Border.all(
                             width: 4,
@@ -78,18 +80,19 @@ class _ProfileScreenBody extends StatelessWidget {
                           borderRadius: BorderRadius.circular(300.0),
                         ),
                         child: ClipRRect(
-                            borderRadius: BorderRadius.circular(300.0),
-                            child: profile.avatarUrl != null
-                                ? Image.network(
-                                    profile.avatarUrl!,
-                                    height: 150,
-                                    width: 150,
-                                    fit: BoxFit.cover,
-                                  )
-                                : const SizedBox(
-                                    height: 150,
-                                    width: 150,
-                                  )),
+                          borderRadius: BorderRadius.circular(300.0),
+                          child: profile.avatarUrl != null
+                              ? Image.network(
+                                  profile.avatarUrl!,
+                                  height: 150,
+                                  width: 150,
+                                  fit: BoxFit.cover,
+                                )
+                              : const SizedBox(
+                                  height: 150,
+                                  width: 150,
+                                ),
+                        ),
                       ),
                       Container(
                         margin: const EdgeInsets.fromLTRB(25, 170, 0, 10),
@@ -187,7 +190,8 @@ class _ProfileScreenBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 child: Text(
                   "Должность:",
                   style: TextStyle(
