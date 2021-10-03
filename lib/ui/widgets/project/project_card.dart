@@ -36,14 +36,17 @@ class ProjectCard extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30.0),
-                          child: project.avatarUrl != null
+                          child: project.photo != null
                               ? Image.network(
-                                  project.avatarUrl!,
+                                  project.photo!,
                                   height: 50,
                                   width: 50,
                                   fit: BoxFit.cover,
                                 )
-                              : const SizedBox(),
+                              : const SizedBox(
+                                  height: 50,
+                                  width: 50,
+                                ),
                         ),
                       )
                     ],

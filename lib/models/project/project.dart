@@ -1,13 +1,14 @@
 import 'dart:convert';
 
 import 'package:elegion/models/profile/profile.dart';
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'project.g.dart';
 
 @JsonSerializable()
 class Project {
-  const Project({
+  Project({
     required this.id,
     required this.title,
     required this.customer,
@@ -15,7 +16,7 @@ class Project {
     required this.googleCalendarLink,
     required this.telegramLink,
     required this.description,
-    required this.avatarUrl,
+    required this.photo,
     required this.workers,
   });
 
@@ -29,10 +30,22 @@ class Project {
   final String googleCalendarLink;
   final String telegramLink;
   @JsonKey(required: false)
-  final String? avatarUrl;
+  final String? photo;
 
-  List<Profile> get workersModels =>
-      workers.map((e) => Profile.fromJson(jsonDecode(e))).toList();
+  final _codec = const JsonCodec();
+
+  List<Profile?> get workersModels {
+    return workers.map((e) {
+      try {
+        final jsonData = _codec.decode(e) as Map<String, dynamic>;
+        return Profile.fromJson(jsonData);
+      } on Exception catch (e) {
+        debugPrint('$e');
+        return null;
+      }
+    }).toList()
+      ..remove(null);
+  }
 
   factory Project.fromJson(Map<String, dynamic> json) =>
       _$ProjectFromJson(json);
