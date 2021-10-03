@@ -41,6 +41,10 @@ class ProfilesScreen extends StatelessWidget {
                       value: state.filter.sortingType,
                       underline: const SizedBox(),
                       alignment: Alignment.centerRight,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: theme.primaryColor,
+                      ),
                       icon: Icon(
                         Icons.keyboard_arrow_down,
                         color: Theme.of(context).primaryColor,
