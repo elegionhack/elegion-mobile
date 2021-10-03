@@ -3,6 +3,7 @@ import 'package:elegion/models/project/project.dart';
 import 'package:elegion/ui/router/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({Key? key, required this.project}) : super(key: key);
@@ -87,7 +88,9 @@ class ProjectCard extends StatelessWidget {
                     child: Row(
                       children: [
                         GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              launchTelegram();
+                            },
                             child: Container(
                                 margin: EdgeInsets.only(right: 15),
                                 child: SvgPicture.asset(
@@ -118,5 +121,13 @@ class ProjectCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+void launchTelegram() async {
+  String url = "https://telegram.me/probka00";
+  print("launchingUrl: $url");
+  if (await canLaunch(url)) {
+    await launch(url);
   }
 }
