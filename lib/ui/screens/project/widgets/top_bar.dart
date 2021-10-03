@@ -22,7 +22,7 @@ class TopProjectBar extends StatelessWidget {
                     image: NetworkImage(
                       project.photo!,
                     ),
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.cover,
                   ),
                 )
               : null,

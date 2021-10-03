@@ -24,26 +24,45 @@ class ProfilesScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: Row(
-                  children: [
-                    Text(
-                      'Сортировать по',
-                      style: theme.textTheme.bodyText1!.copyWith(
-                        color: theme.hintColor,
-                      ),
-                    ),
-                    Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Theme.of(context).primaryColor,
-                    )
-                  ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Сортировать по',
+                  style: theme.textTheme.bodyText1!.copyWith(
+                    color: theme.hintColor,
+                  ),
                 ),
-              ),
-            ],
+                BlocBuilder<ProfilesBloc, ProfilesState>(
+                  builder: (context, state) {
+                    return DropdownButton<ProfileSortingType>(
+                      value: state.filter.sortingType,
+                      underline: const SizedBox(),
+                      alignment: Alignment.centerRight,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: theme.primaryColor,
+                      ),
+                      icon: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      items: ProfileSortingType.values.map((value) {
+                        return DropdownMenuItem<ProfileSortingType>(
+                          value: value,
+                          child: Text(value.title),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        _updateFilter(context, value!);
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
           Flexible(child: BlocBuilder<ProfilesBloc, ProfilesState>(
             builder: (context, state) {
@@ -61,6 +80,17 @@ class ProfilesScreen extends StatelessWidget {
             },
           )),
         ],
+      ),
+    );
+  }
+
+  void _updateFilter(BuildContext context, ProfileSortingType sortingType) {
+    final state = BlocProvider.of<ProfilesBloc>(context).state;
+    BlocProvider.of<ProfilesBloc>(context).add(
+      UpdateProfilesfilter(
+        state.filter.copyWith(
+          sortingType: sortingType,
+        ),
       ),
     );
   }

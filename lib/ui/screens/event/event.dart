@@ -14,6 +14,7 @@ class EventScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
           TopEventBar(event: event),
           Column(

@@ -22,6 +22,7 @@ class ProjectScreen extends StatelessWidget {
           TopProjectBar(project: project),
           Flexible(
               child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -70,18 +71,20 @@ class ProjectScreen extends StatelessWidget {
                 ),
                 Divider(color: Colors.grey[400]),
                 Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-                    child: Text(
-                      'Участники:',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300,
-                          color: Theme.of(context).primaryColor),
-                    )),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                  child: Text(
+                    'Участники:',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300,
+                        color: Theme.of(context).primaryColor),
+                  ),
+                ),
                 SizedBox(
-                  height: 170,
+                  height: 300,
                   child: ListView(
+                    physics: const BouncingScrollPhysics(),
                     children: project.workers
                         .map((e) => ProfileCard(profile: e))
                         .toList(),
