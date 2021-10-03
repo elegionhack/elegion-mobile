@@ -1,6 +1,7 @@
 import 'package:elegion/models/project/project.dart';
 import 'package:elegion/ui/screens/project/widgets/widgets.dart';
 import 'package:elegion/ui/widgets/profiles/profiles.dart';
+import 'package:elegion/utils/url_launcher/launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -110,7 +111,9 @@ class ProjectScreen extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          launchURL(project.telegramLink);
+                        },
                         child: Container(
                           margin: const EdgeInsets.only(right: 15),
                           child: SvgPicture.asset(
@@ -142,7 +145,9 @@ class ProjectScreen extends StatelessWidget {
                             color: Theme.of(context).primaryColor),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          launchURL(project.trackerLink);
+                        },
                         child: Container(
                           margin: const EdgeInsets.only(right: 15),
                           child: SvgPicture.asset(
@@ -174,7 +179,9 @@ class ProjectScreen extends StatelessWidget {
                             color: Theme.of(context).primaryColor),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          launchURL(project.googleCalendarLink);
+                        },
                         child: Container(
                           margin: const EdgeInsets.only(right: 15),
                           child: SvgPicture.asset(
