@@ -59,7 +59,7 @@ class EventCard extends StatelessWidget {
                 vertical: 20.0,
               ),
               child: Text(
-                event.description,
+                event.title,
                 style: TextStyle(
                   color: theme.canvasColor,
                   fontWeight: FontWeight.w700,

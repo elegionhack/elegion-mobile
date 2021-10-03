@@ -42,9 +42,9 @@ class TopEventBar extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: SizedBox(
-                      width: MediaQuery.of(context).size.width*0.9,
+                      width: MediaQuery.of(context).size.width * 0.9,
                       child: Text(
-                        event.description,
+                        event.title,
                         style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.w700,
