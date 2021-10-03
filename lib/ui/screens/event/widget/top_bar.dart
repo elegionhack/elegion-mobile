@@ -41,14 +41,17 @@ class TopEventBar extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: Text(
-                      event.description,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width*0.9,
+                      child: Text(
+                        event.description,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                        softWrap: true,
                       ),
-                      softWrap: true,
                     ),
                   ),
                 ],
