@@ -17,7 +17,7 @@ class EventCard extends StatelessWidget {
     final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
-        AutoRouter.of(context).push(const EventScreenRoute());
+        AutoRouter.of(context).push(EventScreenRoute(event: event));
       },
       child: Stack(
         children: [

@@ -7,6 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:flutter/material.dart' as _i9;
 
+import '../../models/event/event.dart' as _i12;
 import '../../models/profile/profile.dart' as _i10;
 import '../../models/project/project.dart' as _i11;
 import '../screens/event/event.dart' as _i7;
@@ -53,8 +54,10 @@ class AppRouter extends _i8.RootStackRouter {
           routeData: routeData, child: const _i6.EventsScreen());
     },
     EventScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<EventScreenRouteArgs>();
       return _i8.CupertinoPageX<dynamic>(
-          routeData: routeData, child: const _i7.EventScreen());
+          routeData: routeData,
+          child: _i7.EventScreen(key: args.key, event: args.event));
     }
   };
 
@@ -135,8 +138,19 @@ class EventsScreenRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for [_i7.EventScreen]
-class EventScreenRoute extends _i8.PageRouteInfo<void> {
-  const EventScreenRoute() : super(name, path: '/event-screen');
+class EventScreenRoute extends _i8.PageRouteInfo<EventScreenRouteArgs> {
+  EventScreenRoute({_i9.Key? key, required _i12.Event event})
+      : super(name,
+            path: '/event-screen',
+            args: EventScreenRouteArgs(key: key, event: event));
 
   static const String name = 'EventScreenRoute';
+}
+
+class EventScreenRouteArgs {
+  const EventScreenRouteArgs({this.key, required this.event});
+
+  final _i9.Key? key;
+
+  final _i12.Event event;
 }

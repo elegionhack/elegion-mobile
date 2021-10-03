@@ -82,8 +82,8 @@ class ProjectScreen extends StatelessWidget {
                 SizedBox(
                   height: 170,
                   child: ListView(
-                    children: project.workersModels
-                        .map((e) => ProfileCard(profile: e!))
+                    children: project.workers
+                        .map((e) => ProfileCard(profile: e))
                         .toList(),
                   ),
                 ),

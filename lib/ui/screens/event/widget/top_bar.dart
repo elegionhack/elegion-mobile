@@ -1,14 +1,13 @@
-import 'package:elegion/models/project/project.dart';
+import 'package:elegion/models/event/event.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class TopProjectBar extends StatelessWidget {
-  const TopProjectBar({
+class TopEventBar extends StatelessWidget {
+  const TopEventBar({
     Key? key,
-    required this.project,
+    required this.event,
   }) : super(key: key);
 
-  final Project project;
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +15,12 @@ class TopProjectBar extends StatelessWidget {
       children: [
         Container(
           height: 240,
-          decoration: project.photo != null
-              ? BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      project.photo!,
-                    ),
-                    fit: BoxFit.fitWidth,
-                  ),
-                )
-              : null,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(event.imgUrl),
+              fit: BoxFit.fitWidth,
+            ),
+          ),
         ),
         Container(
           height: 240,
@@ -44,10 +39,10 @@ class TopProjectBar extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.all(10),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
                     child: Text(
-                      project.title,
+                      event.description,
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
@@ -56,16 +51,6 @@ class TopProjectBar extends StatelessWidget {
                       softWrap: true,
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    child: GestureDetector(
-                        onTap: () {},
-                        child: SvgPicture.asset(
-                          'assets/icons/cal.svg',
-                          height: 25,
-                          width: 25,
-                        )),
-                  )
                 ],
               ),
             ],

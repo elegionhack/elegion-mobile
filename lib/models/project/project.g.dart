@@ -15,8 +15,9 @@ Project _$ProjectFromJson(Map<String, dynamic> json) => Project(
       telegramLink: json['telegramLink'] as String,
       description: json['description'] as String,
       photo: json['photo'] as String?,
-      workers:
-          (json['workers'] as List<dynamic>).map((e) => e as String).toList(),
+      workers: (json['workers'] as List<dynamic>)
+          .map((e) => Profile.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{

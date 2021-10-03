@@ -1,20 +1,28 @@
+import 'package:elegion/models/event/event.dart';
+import 'package:elegion/ui/screens/event/widget/widget.dart';
 import 'package:flutter/material.dart';
 
 class EventScreen extends StatelessWidget {
-  const EventScreen({Key? key}) : super(key: key);
+  const EventScreen({
+    Key? key,
+    required this.event,
+  }) : super(key: key);
+
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
-          TopProjectBar(),
+          TopEventBar(event: event),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                child: Text(
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                child: const Text(
                   'Описание',
                   style: TextStyle(
                     fontSize: 24,
@@ -22,25 +30,28 @@ class EventScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                  child: Text(
-                    "Маэстро K.nbr lftn rjywthns b exbn cdjtve  nfkfyne",
-                    style: TextStyle(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  event.description,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+              ),
+              Divider(color: Colors.grey[400]),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                child: Text(
+                  'Участники:',
+                  style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w300,
-                    ),
-                  )),
-              Divider(color: Colors.grey[400]),
-              Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-                  child: Text(
-                    'Участники:',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w300,
-                        color: Theme.of(context).primaryColor),
-                  )),
+                      color: Theme.of(context).primaryColor),
+                ),
+              ),
             ],
           ),
           MemberCard(),
@@ -133,54 +144,6 @@ class MemberCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class TopProjectBar extends StatelessWidget {
-  const TopProjectBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 240,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                  "https://pbs.twimg.com/media/DqabDlYWwAEOnBb.jpg:large"),
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-        ),
-        Container(
-          height: 240,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: Text(
-                      "Игра на лютне",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                      softWrap: true,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        )
-      ],
     );
   }
 }
