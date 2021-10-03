@@ -50,9 +50,6 @@ class EventsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // ListView(
-              //   children: state.events.map((e) => Text('$e')).toList(),
-              // ),
             );
           }
           return const Center(child: CircularProgressIndicator());

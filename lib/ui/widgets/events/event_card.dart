@@ -67,6 +67,21 @@ class EventCard extends StatelessWidget {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Chip(
+                label: Text(
+                  '${event.bonus}',
+                  style: theme.textTheme.bodyText1!.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+                backgroundColor: theme.primaryColor,
+              ),
+            ),
+          ),
         ],
       ),
     );
