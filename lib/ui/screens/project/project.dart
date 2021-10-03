@@ -99,7 +99,7 @@ class ProjectScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Чат в Telegram:',
+                        'Чат в Telegram',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
@@ -125,13 +125,14 @@ class ProjectScreen extends StatelessWidget {
                   indent: 15,
                   endIndent: 15,
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Таск трекер:',
+                        'Таск трекер',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
@@ -143,6 +144,38 @@ class ProjectScreen extends StatelessWidget {
                           margin: const EdgeInsets.only(right: 15),
                           child: SvgPicture.asset(
                             'assets/icons/task.svg',
+                            height: 25,
+                            width: 25,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.grey[400],
+                  indent: 15,
+                  endIndent: 15,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Календарь',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Theme.of(context).primaryColor),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 15),
+                          child: SvgPicture.asset(
+                            'assets/icons/cal.svg',
                             height: 25,
                             width: 25,
                           ),
