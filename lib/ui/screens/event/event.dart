@@ -13,6 +13,13 @@ class EventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Theme.of(context).primaryColor,          
+          label: Text('Участвовать'),
+          onPressed: () {},
+        ),
+      
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
@@ -64,6 +71,7 @@ class EventScreen extends StatelessWidget {
           MemberCard(),
           MemberCard(),
           MemberCard(),
+          
         ],
       ),
     );
