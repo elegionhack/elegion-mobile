@@ -1,21 +1,25 @@
 part of 'profile_bloc.dart';
 
 class ProfileState extends Equatable {
-  const ProfileState();
+  ProfileState();
 
   @override
   List<Object> get props => [];
 }
 
-class ProfileLoading extends ProfileState {}
+class ProfileLoading extends ProfileState {
+  ProfileLoading() : super();
+}
 
-class ProfileloadingFailure extends ProfileState {}
+class ProfileloadingFailure extends ProfileState {
+  ProfileloadingFailure() : super();
+}
 
 class ProfileLoaded extends ProfileState {
-  const ProfileLoaded(this.profile);
+  ProfileLoaded({required this.profile}) : super();
 
   final Profile profile;
 
   @override
-  List<Object> get props => super.props..add(profile.hashCode);
+  List<Object> get props => super.props..add(profile);
 }

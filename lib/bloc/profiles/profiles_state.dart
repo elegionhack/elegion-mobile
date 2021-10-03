@@ -1,18 +1,33 @@
 part of 'profiles_bloc.dart';
 
 class ProfilesState extends Equatable {
-  const ProfilesState();
+  const ProfilesState(this.filter);
+
+  final ProfileFilter filter;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [filter];
+
+  ProfilesState copyWith({
+    ProfileFilter? filter,
+  }) {
+    return ProfilesState(
+      filter ?? this.filter,
+    );
+  }
 }
 
-class ProfilesLoading extends ProfilesState {}
+class ProfilesLoading extends ProfilesState {
+  const ProfilesLoading(ProfileFilter filter) : super(filter);
+}
 
-class ProfilesloadingFailure extends ProfilesState {}
+class ProfilesloadingFailure extends ProfilesState {
+  const ProfilesloadingFailure(ProfileFilter filter) : super(filter);
+}
 
 class ProfilesLoaded extends ProfilesState {
-  const ProfilesLoaded(this.profiles);
+  const ProfilesLoaded({required this.profiles, required ProfileFilter filter})
+      : super(filter);
 
   final List<Profile> profiles;
 

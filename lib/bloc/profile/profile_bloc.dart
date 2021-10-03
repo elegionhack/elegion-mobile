@@ -22,7 +22,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     yield ProfileLoading();
     try {
       final profile = (await profilesRepository.getAll()).first;
-      yield ProfileLoaded(profile);
+      yield ProfileLoaded(profile: profile);
     } catch (e) {
       yield ProfileloadingFailure();
     }
