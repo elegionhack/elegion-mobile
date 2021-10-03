@@ -25,27 +25,25 @@ class Project {
   final String title;
   final String customer;
   final String description;
-  final List<String> workers;
+  final List<Profile> workers;
   final String trackerLink;
   final String googleCalendarLink;
   final String telegramLink;
   @JsonKey(required: false)
   final String? photo;
 
-  final _codec = const JsonCodec();
-
-  List<Profile?> get workersModels {
-    return workers.map((e) {
-      try {
-        final jsonData = _codec.decode(e) as Map<String, dynamic>;
-        return Profile.fromJson(jsonData);
-      } on Exception catch (e) {
-        debugPrint('$e');
-        return null;
-      }
-    }).toList()
-      ..remove(null);
-  }
+  // List<Profile?> get workersModels {
+  //   return workers.map((e) {
+  //     try {
+  //       final jsonData = _codec.decode(e) as Map<String, dynamic>;
+  //       return Profile.fromJson(jsonData);
+  //     } on Exception catch (e) {
+  //       debugPrint('$e');
+  //       return null;
+  //     }
+  //   }).toList()
+  //     ..remove(null);
+  // }
 
   factory Project.fromJson(Map<String, dynamic> json) =>
       _$ProjectFromJson(json);
