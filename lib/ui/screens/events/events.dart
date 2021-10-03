@@ -39,6 +39,7 @@ class EventsScreen extends StatelessWidget {
           if (state is EventsLoaded) {
             return Center(
               child: GridView.count(
+                physics: const BouncingScrollPhysics(),
                 mainAxisSpacing: 5.0,
                 crossAxisSpacing: 5.0,
                 padding: const EdgeInsets.all(10.0),

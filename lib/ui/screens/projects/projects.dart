@@ -23,39 +23,41 @@ class ProjectsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 10),
-                child: Text(
-                  'Сортировать по',
-                  style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              ),
-              TextButton(
-                  onPressed: () {},
-                  child: Row(
-                    children: [
-                      Text(
-                        'крутоте',
-                        style: TextStyle(color: Theme.of(context).primaryColor),
-                      ),
-                      Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Theme.of(context).primaryColor,
-                      )
-                    ],
-                  )),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     const Padding(
+          //       padding: EdgeInsets.only(left: 10),
+          //       child: Text(
+          //         'Сортировать по',
+          //         style: TextStyle(
+          //           fontSize: 13,
+          //           fontWeight: FontWeight.w300,
+          //         ),
+          //       ),
+          //     ),
+          //     // TextButton(
+          //     //     onPressed: () {},
+          //     //     child: Row(
+          //     //       children: [
+          //     //         Text(
+          //     //           'крутоте',
+          //     //           style: TextStyle(color: Theme.of(context).primaryColor),
+          //     //         ),
+          //     //         Icon(
+          //     //           Icons.keyboard_arrow_down,
+          //     //           color: Theme.of(context).primaryColor,
+          //     //         )
+          //     //       ],
+          //     //     )),
+          //   ],
+          // ),
           Flexible(
             child: BlocBuilder<ProjectsBloc, ProjectsState>(
               builder: (context, state) {
                 if (state is ProjectsLoaded) {
                   return ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.only(top: 10),
                     itemCount: state.projects.length,
                     itemBuilder: (ctx, i) {
                       return ProjectCard(

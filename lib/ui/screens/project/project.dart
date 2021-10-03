@@ -22,6 +22,7 @@ class ProjectScreen extends StatelessWidget {
           TopProjectBar(project: project),
           Flexible(
               child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -83,6 +84,7 @@ class ProjectScreen extends StatelessWidget {
                 SizedBox(
                   height: 300,
                   child: ListView(
+                    physics: const BouncingScrollPhysics(),
                     children: project.workers
                         .map((e) => ProfileCard(profile: e))
                         .toList(),
