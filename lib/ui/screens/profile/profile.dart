@@ -294,7 +294,7 @@ class _ProfileScreenBody extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  launchURL(profile.telegramLink);
+                  launchURL(profile.telegramLink ?? '');
                 },
                 child: Container(
                   margin: const EdgeInsets.only(right: 15),
